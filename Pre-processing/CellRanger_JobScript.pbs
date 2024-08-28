@@ -1,0 +1,11 @@
+#!/bin/bash
+#PBS -l walltime=06:00:00
+#PBS -l select=1:ncpus=16:mem=64gb
+
+export PATH=/rds/general/user/mg2523/home/apps/cellranger-8.0.1:$PATH 
+cd $PBS_O_WORKDIR
+
+export fastq_data=/rds/general/user/mg2523/ephemeral/Fastq/Dick_S.A
+export reference=/rds/general/user/mg2523/home/apps/Reference/refdata-gex-GRCm39-2024-A
+ 
+cellranger count --id=D_15415173 --transcriptome=$reference --create-bam true --fastqs=$fastq_data --sample=SRR15415173 --localcores=16 --localmem=64
