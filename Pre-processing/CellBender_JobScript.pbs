@@ -1,0 +1,8 @@
+#PBS -l select=1:ncpus=4:mem=24gb:ngpus=1:gpu_type=RTX6000
+#PBS -lwalltime=01:00:00
+
+module load anaconda3/personal 
+source activate cellbender 
+cd $PBS_O_WORKDIR
+
+cellbender remove-background --cuda --input raw_feature_bc_matrix.h5 --output output_13292569.h5
